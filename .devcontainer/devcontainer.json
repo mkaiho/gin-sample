@@ -1,0 +1,8 @@
+{
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "workspace",
+  "workspaceFolder": "/go/src/github.com/mkaiho/gin-sample",
+  "extensions": [
+    "golang.go",
+  ]
+}
