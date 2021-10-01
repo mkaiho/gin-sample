@@ -1,10 +1,10 @@
 OUT_DIR := ./build
 OUT_BIN_NAME := main
 
-.PHONY: build clean
+.PHONY: build-server clean
 
-build:
-	@go build -o $(OUT_DIR)/$(OUT_BIN_NAME)
+build-server:
+	@go build -o $(OUT_DIR)/server ./cmd/server
 
 clean:
 	@rm -r $(OUT_DIR)
