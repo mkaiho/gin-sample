@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gin-sample-deployment
+  namespace: gin-sample-dev
+  labels:
+    app: gin-sample
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: gin-sample
+  template:
+    metadata:
+      labels:
+        app: gin-sample
+    spec:
+      containers:
+      - image: mkaiho/gin-sample:1.0
+        name: kubernetes-node-sample
