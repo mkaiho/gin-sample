@@ -10,13 +10,17 @@ WORKDIR $GOPATH/src/$SRC_MODULE
 COPY ./Makefile $GOPATH/src/$SRC_MODULE
 COPY ./go.mod $GOPATH/src/$SRC_MODULE
 COPY ./go.sum $GOPATH/src/$SRC_MODULE
-COPY ./main.go $GOPATH/src/$SRC_MODULE
+COPY ./domain $GOPATH/src/$SRC_MODULE/domain
+COPY ./usecases $GOPATH/src/$SRC_MODULE/usecases
+COPY ./interfaces $GOPATH/src/$SRC_MODULE/interfaces
+COPY ./infrastructures $GOPATH/src/$SRC_MODULE/infrastructures
+COPY ./cmd $GOPATH/src/$SRC_MODULE/cmd
 
 RUN yum install -y curl tar make gzip \
   && curl -OL https://golang.org/dl/${GO_FILE} \
   && tar -C /usr/local -xzf ${GO_FILE} \
   && rm ${GO_FILE} \
-  && make build
+  && make build-server
 
 FROM amazonlinux:2
 
@@ -28,4 +32,4 @@ WORKDIR /ec2-user
 
 COPY --from=builder /go/src/github.com/mkaiho/gin-sample/build ./build
 
-CMD ["./build/main"]
+CMD ["./build/server"]
