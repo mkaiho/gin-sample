@@ -17,3 +17,24 @@ services:
     working_dir: /go/src/github.com/mkaiho/gin-sample
     ports:
       - 3000:3000
+    environment:
+      DB_HOST: mysqldb
+      DB_NAME: *MYSQL_DATABASE
+      DB_USER_NAME: *MYSQL_USER
+      DB_PASSWORD: *MYSQL_PASSWORD
+  mysqldb:
+    build:
+      context: ./docker/mysql
+      dockerfile: ./Dockerfile
+    container_name: gin-sample-db
+    ports:
+      - 13306:3306
+    volumes:
+      - ./docker/mysql/init.d:/docker-entrypoint-initdb.d
+      - ./docker/mysql/conf.d:/etc/mysql/conf.d
+      - ./docker/mysql/data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: *MYSQL_DATABASE
+      MYSQL_USER: *MYSQL_USER
+      MYSQL_PASSWORD: *MYSQL_PASSWORD

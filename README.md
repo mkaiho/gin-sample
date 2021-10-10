@@ -44,8 +44,8 @@ minikube addons enable ingress
 ### Build and Push docker image
 
 ```.sh
-docker build --rm -t mkaiho/gin-sample:1.0 .
-docker push mkaiho/gin-sample:1.0
+docker build --rm -t mkaihou/gin-sample:1.0 .
+docker push mkaihou/gin-sample:1.0
 ```
 
 ### Run API server on local minikube cluster
