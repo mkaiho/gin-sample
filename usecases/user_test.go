@@ -28,11 +28,12 @@ func (ur DummyUserRepository) FindById(id string) *models.User {
 func TestFindUser(t *testing.T) {
 	t.Run("Non null value is Returned when there is user which has id equivalent with passed.", func(t *testing.T) {
 		expectedId := dummyUserId
+		param := usecases.FindUserRequest{ID: expectedId}
 		sut := usecases.UserInteractor{
 			UserRepository: DummyUserRepository{},
 		}
 
-		actual := sut.FindUser(expectedId)
+		actual := sut.FindUser(param)
 
 		if actual == nil {
 			t.Errorf("Returned null value; want non null value.")

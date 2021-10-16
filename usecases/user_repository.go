@@ -1,4 +1,4 @@
-package gateways
+package usecases
 
 import "github.com/mkaiho/gin-sample/domain/models"
 
