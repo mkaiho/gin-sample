@@ -16,5 +16,5 @@ spec:
         app: gin-sample
     spec:
       containers:
-      - image: mkaiho/gin-sample:1.0
+      - image: mkaihou/gin-sample:1.0
         name: kubernetes-node-sample
