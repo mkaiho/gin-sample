@@ -7,7 +7,7 @@ ENV GOPATH /go
 ENV PATH $PATH:/usr/local/go/bin:$GOPATH/bin
 
 RUN yum update -y && yum install -y \
-  sudo tar curl make git
+  sudo tar curl gcc make git
 
 RUN useradd "ec2-user" && echo "ec2-user ALL=NOPASSWD: ALL" >> /etc/sudoers
 
